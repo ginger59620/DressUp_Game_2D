@@ -455,10 +455,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 583272788}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 180}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &231318092
 MonoBehaviour:
@@ -1224,6 +1224,7 @@ GameObject:
   - component: {fileID: 583272788}
   - component: {fileID: 583272790}
   - component: {fileID: 583272789}
+  - component: {fileID: 583272791}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -1289,6 +1290,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583272787}
   m_CullTransparentMesh: 1
+--- !u!114 &583272791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583272787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 180, y: 180}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &609066242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,7 +1864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 723186091}
   - component: {fileID: 723186092}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Second BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2452,7 +2477,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1076883444}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BGS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3831,7 +3856,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1841403184}
   - component: {fileID: 1841403185}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UI BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4211,7 +4236,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1171489698}
-  - {fileID: 319574266}
-  - {fileID: 397354731}
-  - {fileID: 1311795382}
   - {fileID: 1076883444}
+  - {fileID: 1311795382}
+  - {fileID: 397354731}
+  - {fileID: 319574266}
