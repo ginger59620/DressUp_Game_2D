@@ -3,25 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DressingUpItem : MonoBehaviour, IDropHandler
+public class DressingUpItem : MonoBehaviour //, IDropHandler
 {
-    public void OnDrop(PointerEventData eventData)
-    {
-        GameObject drooped = eventData.pointerDrag;
-        DraggableItem draggableItem = drooped.GetComponent<DraggableItem>();
-        draggableItem.parentAfterDrag = transform;
+    public AudioSource source;
+    public AudioClip shineComplete;
 
+    public void Placed()
+    {
+        source.PlayOneShot(shineComplete);
     }
 
-    // Start is called before the first frame update
-    void Start()
+   /* public void OnDrop(PointerEventData eventData)
     {
+        GameObject dropped = eventData.pointerDrag;
+        DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
+       // draggableItem.parentAfterDrag = transform;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    }*/
 }
+
+  
+   

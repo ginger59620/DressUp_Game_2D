@@ -4,10 +4,57 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DraggableItem : MonoBehaviour //, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public Image image;
+    public AudioSource source;
+    public AudioClip prickUp, dropOff;
+
+    private bool dragging;
+
+    private Vector2 offset, originalPosition;
+
+    void Awake()
+    {
+        originalPosition = transform.position;
+    }
+
+    void Update()
+    {
+        if (!dragging) return;
+
+        var mousePosition = GetMousePos();
+
+        transform.position = mousePosition - offset;
+    }
+    void OnMouseDown()
+    {
+        dragging = true;
+        source.PlayOneShot(prickUp);
+
+        offset = GetMousePos() - (Vector2)transform.position;
+    }
+
+    void OnMouseUp()
+    {
+        //if(Vector2.Distance(transform.position, slot))
+
+        transform.position = originalPosition;
+        dragging = false;
+        source.PlayOneShot(dropOff);
+    }
+
+    Vector2 GetMousePos()
+    {
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+
+
+    
+
+    /*public Image image;
     [HideInInspector] public Transform parentAfterDrag;
+
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -31,5 +78,5 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         transform.SetParent(parentAfterDrag);
 
         image.raycastTarget = true;
-    }
+    }*/
 }
