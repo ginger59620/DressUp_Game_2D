@@ -27,8 +27,8 @@ public class DraggableItem : MonoBehaviour
     void Update()
     {
 
-        if (finish == false)
-        {
+        //if (finish == false)
+        
             if (moving)
             {
                 Vector3 mousePos;
@@ -37,7 +37,7 @@ public class DraggableItem : MonoBehaviour
 
                 this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
             }
-        }
+        
     }
 
     private void OnMouseDown()
@@ -62,7 +62,7 @@ public class DraggableItem : MonoBehaviour
         source.PlayOneShot(dropOff);
         moving = false; 
 
-        if (Mathf.Abs(this.transform.localPosition.x - correctForm.transform.localPosition.x) <= 0.1f && Mathf.Abs(this.transform.localPosition.y - correctForm.transform.localPosition.y) <= 0.1f)
+        /*if (Mathf.Abs(this.transform.localPosition.x - correctForm.transform.localPosition.x) <= 0.1f && Mathf.Abs(this.transform.localPosition.y - correctForm.transform.localPosition.y) <= 0.1f)
         {
             this.transform.position = new Vector3(correctForm.transform.position.x, correctForm.transform.position.y, correctForm.transform.position.z);
             finish = true;
@@ -70,6 +70,6 @@ public class DraggableItem : MonoBehaviour
         else
         {
             this.transform.localPosition = new Vector3(resetPosition.x, resetPosition.y, resetPosition.z);
-        }
+        }*/
     }
 }
