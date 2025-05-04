@@ -64,7 +64,7 @@ public class DraggableItem : MonoBehaviour
 
         if (Mathf.Abs(this.transform.localPosition.x - correctForm.transform.localPosition.x) <= 0.1f && Mathf.Abs(this.transform.localPosition.y - correctForm.transform.localPosition.y) <= 0.1f)
         {
-            this.transform.localPosition = new Vector3(correctForm.transform.position.x, correctForm.transform.position.y, correctForm.transform.position.z);
+            this.transform.position = new Vector3(correctForm.transform.position.x, correctForm.transform.position.y, correctForm.transform.position.z);
             finish = true;
         }
         else
