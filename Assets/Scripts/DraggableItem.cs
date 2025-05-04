@@ -4,89 +4,72 @@ using UnityEngine;
 
 
 
-public class DraggableItem : MonoBehaviour //, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DraggableItem : MonoBehaviour 
 {
-    public SpriteRenderer rendered;
-
+    //audio variables
     public AudioSource source;
     public AudioClip prickUp, dropOff;
+    //Variables
+    public GameObject correctForm;
+    private bool moving;
+    private bool finish;
+    //Mouse position variable
+    private float startPosX;
+    private float startPosY;
 
-    private bool dragging;
+    private Vector3 resetPosition;
 
-    private Vector2 offset, originalPosition;
-
-    private DressingUpItem _slot;
-
-    public void Init(DressingUpItem slot)
+    void Start()
     {
-        rendered.sprite = slot.Renderer.sprite;
-        _slot = slot;
-    }
-
-    void Awake()
-    {
-        originalPosition = transform.position;
+        resetPosition = this.transform.localPosition; 
     }
 
     void Update()
     {
-        if (!dragging) return;
 
-        var mousePosition = GetMousePos();
+        if (finish == false)
+        {
+            if (moving)
+            {
+                Vector3 mousePos;
+                mousePos = Input.mousePosition;
+                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-        transform.position = mousePosition - offset;
+                this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
+            }
+        }
     }
-    void OnMouseDown()
+
+    private void OnMouseDown()
     {
-        dragging = true;
         source.PlayOneShot(prickUp);
 
-        offset = GetMousePos() - (Vector2)transform.position;
+        if(Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePos;
+            mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+            startPosX = mousePos.x - this.transform.localPosition.x;
+            startPosY = mousePos.y - this.transform.localPosition.y;
+
+            moving = true;
+        }
     }
 
-    void OnMouseUp()
+    private void OnMouseUp()
     {
-        //if(Vector2.Distance(transform.position, slot))
-
-        transform.position = originalPosition;
-        dragging = false;
         source.PlayOneShot(dropOff);
+        moving = false; 
+
+        if (Mathf.Abs(this.transform.localPosition.x - correctForm.transform.localPosition.x) <= 0.1f && Mathf.Abs(this.transform.localPosition.y - correctForm.transform.localPosition.y) <= 0.1f)
+        {
+            this.transform.localPosition = new Vector3(correctForm.transform.position.x, correctForm.transform.position.y, correctForm.transform.position.z);
+            finish = true;
+        }
+        else
+        {
+            this.transform.localPosition = new Vector3(resetPosition.x, resetPosition.y, resetPosition.z);
+        }
     }
-
-    Vector2 GetMousePos()
-    {
-        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    }
-
-
-
-    
-
-    /*public Image image;
-    [HideInInspector] public Transform parentAfterDrag;
-
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        Debug.Log("Start Drag");
-        parentAfterDrag = transform.parent;
-        transform.SetParent(transform.root);
-        transform.SetAsLastSibling();
-
-        image.raycastTarget = false;
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        Debug.Log("Dragging");
-        transform.position = Input.mousePosition;
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        Debug.Log("End Drag");
-        transform.SetParent(parentAfterDrag);
-
-        image.raycastTarget = true;
-    }*/
 }

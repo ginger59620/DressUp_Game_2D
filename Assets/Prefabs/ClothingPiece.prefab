@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5805672368323271943}
   - component: {fileID: 2708937601732349736}
   - component: {fileID: 3609851845825379265}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ClothingPiece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,6 +102,7 @@ MonoBehaviour:
   source: {fileID: 3609851845825379265}
   prickUp: {fileID: 8300000, guid: 987ab223139a9904f80a1a9c2e7c1f8b, type: 3}
   dropOff: {fileID: 8300000, guid: ecab8e876586b2f478030f07bc635b04, type: 3}
+  correctForm: {fileID: 0}
 --- !u!61 &2708937601732349736
 BoxCollider2D:
   m_ObjectHideFlags: 0
