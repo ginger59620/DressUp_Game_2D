@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+[System.Serializable]
+public class Character
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Sprite characterSprite;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
