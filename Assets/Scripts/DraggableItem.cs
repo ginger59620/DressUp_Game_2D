@@ -1,17 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
+
+
 
 public class DraggableItem : MonoBehaviour //, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public SpriteRenderer rendered;
+
     public AudioSource source;
     public AudioClip prickUp, dropOff;
 
     private bool dragging;
 
     private Vector2 offset, originalPosition;
+
+    private DressingUpItem _slot;
+
+    public void Init(DressingUpItem slot)
+    {
+        rendered.sprite = slot.Renderer.sprite;
+        _slot = slot;
+    }
 
     void Awake()
     {
