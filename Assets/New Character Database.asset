@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d555aba09c08b44e96cf577ee6cae58, type: 3}
   m_Name: New Character Database
   m_EditorClassIdentifier: 
-  character: []
+  character:
+  - characterSprite: {fileID: 21300000, guid: f7ea54deba9ce1b4eab235d77bb3ce43, type: 3}
+  - characterSprite: {fileID: 21300000, guid: f1c07cac1f35c9745a1bb3a10b4ccfb4, type: 3}
+  - characterSprite: {fileID: 21300000, guid: 07ddec5f2db93bf4087e8a62d01dc013, type: 3}
